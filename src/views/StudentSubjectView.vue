@@ -26,17 +26,7 @@
               <td v-text="ss.subjects.nameA"></td>
               <td v-text="ss.subjects.credits"></td>
               <td v-text="ss.subjects.teachers.name"></td>
-              <td>
-                <router-link :to="{path:'edit/'+ss.id}" class="btn btn-warning">
-                  <i class="fa-solid fa-edit">
-                  </i>
-                </router-link>
-                
-                <button class="btn btn-danger" v-on:click=" delete(sbj.id,tch.name)">
-                  <i class="fa-solid fa-trash">
-                  </i>
-                </button>
-              </td>
+
   
   
             </tr>
@@ -77,21 +67,18 @@
         confirm('http://127.0.0.1:8000/api/v1/subject',id,'Eliminar Profesor', ' Realmente desea eliminar a'+name+ '?')
       this.charging=false;
       }
-      //getTeacherName(teacherId) {
-    //  const teacher = this.teacher.find(teacher => teacher.id === teacherId);
-      //return teacher ? teacher.name : 'Desconocido';
-    //},
+
   }
   }
   </script>
 
 <style>
 .card{
-  background-color: rgb(52, 192, 238); /* Define el color de fondo azul claro */
+  background-color: rgb(52, 192, 238); 
       color: black;
 }
 .bg-dark-blue {
-    background-color: rgb(3, 58, 77); /* Define el color de fondo azul claro */
+    background-color: rgb(3, 58, 77);
     color: black;
   }
 

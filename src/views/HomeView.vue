@@ -83,11 +83,11 @@ export default{
 
 <style>
 .card{
-background-color: rgb(52, 192, 238); /* Define el color de fondo azul claro */
+background-color: rgb(52, 192, 238);
     color: black;
 }
 .bg-dark-blue {
-  background-color: rgb(3, 58, 77); /* Define el color de fondo azul claro */
+  background-color: rgb(3, 58, 77); 
   color: black;
 }
 

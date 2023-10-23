@@ -6,7 +6,7 @@
                     <h3>Registrar Profesores</h3>
                 </div>
                 <div class="card-body">
-                    <form @click="saveTc">
+                    <form >
                         <div className="row my-3">
                             <div class="col-lg-6 form-group">
                                 <label>Nombre completo</label>
@@ -46,7 +46,7 @@
 
                         </div>
                         <div class="container">
-                            <button class="bg-info "> <i class=" fa  fa-floppy-disk"> 
+                            <button @click="saveTc()" class="bg-info "> <i class=" fa  fa-floppy-disk"> 
                                 Registar</i></button>
 
                         </div>

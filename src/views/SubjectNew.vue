@@ -6,7 +6,7 @@
                    <h3>Registrar Asignaturas</h3> 
                 </div>
                 <div class="card-body">
-                    <form @click="saveSj">
+                    <form>
                         <div className="row my-3">
                             <div class="col-lg-6 form-group">
                                 <label>Nombre</label>
@@ -16,7 +16,7 @@
                             <div class="col-lg-6 form-group">
                                 <label>Descripcion</label>
                                 <input type="text" v-model="description" id="description"
-                                    placeholder="Ingrese una descripción" required maxlength="30" class="form-control">
+                                    placeholder="Ingrese una descripción" required maxlength="80" class="form-control">
                             </div>
 
                         </div>
@@ -38,17 +38,17 @@
                         <div className="row my-3">
                             <div class="col-lg-6 form-group">
                                 <label>Tipo de Curso</label>
-                                <select name="type_of_course" id="" required maxlength="30" class="form-control">
-                                    <option value={0} hidden>
+                                <select v-model="type_of_course" name="type_of_course" id="" required maxlength="30" class="form-control">
+                                    <option value=0 hidden>
                                         Selecciona el tipo de asignatura
                                     </option>
-                                    <option value={1}>Obligatoria</option>
-                                    <option value={2}>Electiva</option>
+                                    <option value=1>Obligatoria</option>
+                                    <option value=2>Electiva</option>
                                 </select>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Profesor</label>
-                                <select name="teacher_id" id="" required maxlength="30" class="form-control" >
+                                <select v-model="idTeacher" name="teacher_id" id="" required maxlength="30" class="form-control" >
                                     <option v-for="teacher in teachers" :key="teacher.id" :value="teacher.id">
                                         {{ teacher.name }}
                                     </option>
@@ -57,7 +57,7 @@
                             
                         </div>
                         <div class="container">
-                            <button class="bg-info"><i class=" fa  fa-floppy-disk">Registar</i>
+                            <button @click="saveSj()" class="bg-info"><i class=" fa  fa-floppy-disk">Registar</i>
                             </button>
 
                         </div>
@@ -83,35 +83,38 @@ export default {
             description: '',
             credits: '',
             knowledge_area: '',
-            type_of_course: '',
+            type_of_course: null,
             teachers: [],
             url: 'http://127.0.0.1:8000/api/v1/subject',
-            charging: false
+            charging: false,
+            idTeacher: null
         }
     },
     mounted() {
-        // Realiza una solicitud para obtener la lista de profesores desde tu API
-        axios.get('http://127.0.0.1:8000/api/v2/teacher') // Ajusta la URL a tu API
+       
+        axios.get('http://127.0.0.1:8000/api/v2/teacher') 
        
         .then(response => { 
-                this.teachers = response.data; // Asigna la lista de profesores a la propiedad teachers
+                this.teachers = response.data; 
             })
             .catch(error => {
                 console.error('Error al obtener la lista de profesores', error);
             });
     },
     methods: {
+        onSave() {
+
+        },
         saveSj() {
             event.preventDefault();
 
             var params = {
                 nameA: this.nameA.trim(), description: this.description.trim(), credits: this.credits.trim(), knowledge_area: this.knowledge_area.trim(),
-                type_of_course: this.type_of_course.trim(),teacher_id: this.teacher_id ? this.teacher_id.trim() : ''
+                type_of_course: this.type_of_course.trim(),teacher_id: this.idTeacher
             }
             sendRequest('POST', params, this.url, 'Asignatura Registrada')
         }
     }
-
 }
 
 
