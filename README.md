@@ -16,5 +16,6 @@ Se tiene un menu con los siguente:
 - Asignatura: Permite listar las asignaturas ya creados y crear una nueva (Tener en cuenta que al crear un nueva , redirige al reporte que es la pagina principal)
 - Estudiante: Permite listar los estudiantes ya creados y crear un nuevo estudiante(Tener en cuenta que al crear un nuevo registro, redirige al reporte que es la pagina principal)
 - Estudiantes-Asignatura(reporte de asginación): Se tiene una lista donde podemos ver el reporte, con nombre de estudiante, que asignatura tiene asignada, con su respectivo creditos y profesor asociado)
-  ![image](https://github.com/mimuriel/app_psicol_front/assets/143145862/3f3dee52-ff41-49ff-88d4-f1f58b847c92)
+![image](https://github.com/mimuriel/app_psicol_front/assets/143145862/aa56f8d5-1337-40ac-8b17-a82a938c4143)
+
 
