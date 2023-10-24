@@ -15,8 +15,7 @@ export function show_alert(title, icon, foco = ''){
     });
 }
 
-export function confirm(urlWithSlash,id,title,message){
-    var url=urlWithSlash+id;
+export function confirm(urlWithSlash,title,message){
     const swalWithBootstrapButton = Swal.mixin({
         customClass:{confirmButton:'btn btn-success me-3',cancelButton:'btn btn-danger '}
     });
@@ -28,13 +27,15 @@ export function confirm(urlWithSlash,id,title,message){
         confirmButtonText:'<i class="fa-solid fa-check"></i> Si,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar', }).then((res)=>{
             if(res.isConfirmed){
-                sendRequest('DELETE',{id:id},url,'Eliminado con Exito');
-                Swal.fire({
-                    title:title,
-                    icon:icon,
-                    customClass:{confirmButton:'btn btn-primary', popup:'animated zoonIn'},
-                    buttonsStyling:false
-                });
+                axios.delete(urlWithSlash).then((res) => {
+                    show_alert('El registro se eliminó correctamente','success');
+                    window.setTimeout(function(){
+                        location.reload();
+                    },3000);
+                }).catch((error) => {
+                    const message = error.response.data.rErrors[0][1]
+                    show_alert(message,'error');
+                })                
             }
             else{
                 show_alert('Operación Cancelada', 'info');
@@ -57,7 +58,5 @@ export function sendRequest(method,parameters,url, message){
         }
     }).catch(function(error){
         show_alert('Error de servidor','error');
-    })
+    })
 }
-
-

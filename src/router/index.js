@@ -5,6 +5,7 @@ import StudentNew from '../views/StudentNew'
 import StudentEdit from '../views/StudentEdit'
 import TeacherView from '../views/TeacherView'
 import TeacherNew from '../views/TeacherNew';
+import TeacherEdit from '../views/TeacherEdit.vue';
 import SubjectView from '../views/SubjectView'
 import SubjectNew from '../views/SubjectNew'
 import StudentSubjectView from '../views/StudentSubjectView'
@@ -30,7 +31,7 @@ const routes = [
   }
   ,
   {
-    path: '/EditE:id',
+    path: '/EditE/:id',
     name: 'EditE',
     component: StudentEdit
   }
@@ -44,6 +45,11 @@ const routes = [
     path: '/CreateT',
     name: 'CreateT',
     component: TeacherNew
+  },
+  {
+    path: '/EditT/:id',
+    name: 'EditT',
+    component: TeacherEdit
   },
   {
     path: '/viewA',
@@ -68,4 +74,4 @@ const router = createRouter({
   routes
 })
 
-export default router
+export default router
